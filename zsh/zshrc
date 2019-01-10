@@ -1,0 +1,54 @@
+EDITOR=nvim
+ZPLUG_HOME=~/.config/zsh/zplug
+
+# emacs mode
+bindkey -e
+
+source ~/.config/zsh/zplug/init.zsh
+
+zplug "mdumitru/git-aliases"
+
+zplug "rupa/z", use:"z.sh"
+
+zplug "andrewferrier/fzf-z"
+
+zplug "zsh-users/zsh-completions"
+
+zplug "zsh-users/zsh-autosuggestions"
+
+zplug "zdharma/fast-syntax-highlighting", defer:2
+
+zplug "~/.config/zsh/lplug", from:local, use:"*.zsh"
+
+zplug load
+
+# theme
+setopt prompt_subst
+local ret_status="%(?:%{$fg_bold[green]%}✔ :%{$fg_bold[red]%}✘ )"
+_fishy_collapsed_wd() {
+  echo $(pwd | perl -pe '
+   BEGIN {
+      binmode STDIN,  ":encoding(UTF-8)";
+      binmode STDOUT, ":encoding(UTF-8)";
+   }; s|^$ENV{HOME}|~|g; s|/([^/.])[^/]*(?=/)|/$1|g; s|/\.([^/])[^/]*(?=/)|/.$1|g
+')
+}
+
+local user_color='blue'; [ $UID -eq 0 ] && user_color='yellow'
+PROMPT='${ret_status}%{$fg[$user_color]%}$(_fishy_collapsed_wd)%{$reset_color%} '
+
+
+# disable ctrl+Q
+stty -ixon
+
+# enable key home and end
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
+
+# alias
+alias ll='ls -al'
+alias tmuxn='tmux new -s'
+alias tmuxt='tmux attach -t'
+alias tmuxpl='tmuxp load'
+alias bat='bat --theme OneHalfDark'
+

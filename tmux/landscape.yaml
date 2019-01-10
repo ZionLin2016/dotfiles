@@ -1,0 +1,16 @@
+session_name: landscape
+windows:
+  - window_name: work
+    focus: true
+    layout: c2ee,237x57,0,0{75x57,0,0[75x28,0,0,25,75x28,0,29,26],86x57,76,0,27,74x57,163,0[74x19,163,0,28,74x18,163,20,29,74x18,163,39,30]}
+    panes:
+      - shell_command:
+      - shell_command:
+      - shell_command:
+        focus: true
+      - shell_command: /usr/bin/htop
+      - shell_command:
+      - shell_command: /usr/bin/nnn
+  - window_name: edit
+    panes:
+      - shell_command:

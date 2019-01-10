@@ -1,0 +1,23 @@
+set relativenumber
+set number
+set clipboard=unnamedplus
+set smartcase
+
+let mapleader = ' '
+
+noremap q <Nop>
+noremap qq :q<CR>
+noremap gb :action Back<CR>
+noremap gf :action Forward<CR>
+noremap g, :action JumpToLastChange<CR>
+noremap g; :action JumpToNextChange<CR>
+noremap gd :action GotoDeclaration<CR>
+noremap gi :action GotoImplementation<CR>
+noremap gs :action GotoSuperMethod<CR>
+noremap <leader>fu :action FindUsages<CR>
+noremap <leader>su :action ShowUsages<CR> 
+noremap <leader>g :action Generate<CR>
+noremap <leader>re :action RenameElement<CR>
+noremap <leader>hu :action Vcs.RollbackChangedLines<CR>
+noremap ]c :action VcsShowNextChangeMarker<CR>
+noremap [c :action VcsShowPrevChangeMarker<CR>
