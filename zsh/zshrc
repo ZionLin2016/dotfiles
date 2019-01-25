@@ -18,6 +18,10 @@ zplug "zsh-users/zsh-autosuggestions"
 
 zplug "zdharma/fast-syntax-highlighting", defer:2
 
+zplug "pierpo/fzf-docker"
+
+zplug "hlissner/zsh-autopair", defer:2
+
 zplug "~/.config/zsh/lplug", from:local, use:"*.zsh"
 
 zplug load

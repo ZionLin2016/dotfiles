@@ -1,7 +1,7 @@
 syntax on
 set number
 set relativenumber
-set ts=4
+set tabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
@@ -37,8 +37,10 @@ noremap qq :q<CR>
 noremap qa :qa<CR>
 noremap qz :q!<CR>
 noremap qx :qa!<CR>
+noremap <silent> qc :ccl<CR>
 noremap <leader>w :w<CR>
 noremap <leader>wq :wq<CR>
+noremap <silent> <leader>l :nohlsearch<CR>
 cnoremap <C-B> <Left>
 cnoremap <C-F> <Right>
 cnoremap <C-A> <Home>
@@ -88,6 +90,9 @@ Plug 'scrooloose/nerdcommenter'
 " format
 Plug 'sbdchd/neoformat'
 
+" gdb
+Plug 'sakhnik/nvim-gdb', { 'do': './install.sh' }
+
 " language server
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
@@ -104,7 +109,7 @@ noremap <leader>ff :Files<CR>
 noremap <leader>ft :Tags<CR>
 noremap <leader>fl :Lines<CR>
 noremap <leader>fb :Buffers<CR>
-noremap <leader>fw :Windows<CR>
+noremap <M-0> :Windows<CR>
 
 " mundo toggle
 noremap <silent> <M-2> :MundoToggle<CR>

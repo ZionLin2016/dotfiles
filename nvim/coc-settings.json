@@ -21,7 +21,7 @@
       "filetypes": ["dockerfile"],
       "args": ["--stdio"]
     },
-     "bash": {
+    "bash": {
       "command": "bash-language-server",
       "args": ["start"],
       "filetypes": ["sh"],
@@ -29,7 +29,5 @@
     }
   },
   "yaml.validate": true,
-  "yaml.completion": true,
-  "yaml.editor.tabSiez": 2,
-  "yaml.editor.insertSpaces": 2
+  "yaml.completion": true
 }
