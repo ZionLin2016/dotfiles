@@ -13,7 +13,8 @@ set smartcase
 set updatetime=500
 set hidden
 set wildmode=list:longest,list:full
-set encoding=UTF-8
+set encoding=utf-8
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 
 " undo
 set undofile
@@ -106,8 +107,8 @@ let g:NERDTreeWinSize = 25
 let g:fzf_filemru_bufwrite = 1
 noremap <leader>fm :FilesMru --tiebreak=end<CR>
 noremap <leader>ff :Files<CR>
-noremap <leader>ft :Tags<CR>
-noremap <leader>fl :Lines<CR>
+noremap <leader>ft :BTags<CR>
+noremap <leader>fl :BLines<CR>
 noremap <leader>fb :Buffers<CR>
 noremap <M-0> :Windows<CR>
 
