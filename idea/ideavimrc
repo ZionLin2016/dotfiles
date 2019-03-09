@@ -1,9 +1,10 @@
-set relativenumber
-set number
 set clipboard=unnamedplus
 set smartcase
 
 let mapleader = ' '
+
+set multiple-cursors
+set surround 
 
 noremap q <Nop>
 noremap qq :q<CR>
@@ -19,5 +20,8 @@ noremap <leader>fu :action FindUsages<CR>
 noremap <leader>su :action ShowUsages<CR> 
 noremap <leader>re :action RenameElement<CR>
 noremap <leader>hu :action Vcs.RollbackChangedLines<CR>
+noremap <leader>hc :action CallHierarchy<CR>
+noremap <leader>hm :action MethodHierarchy<CR>
+noremap <leader>ht :action TypeHierarchy<CR>
 noremap ]c :action VcsShowNextChangeMarker<CR>
 noremap [c :action VcsShowPrevChangeMarker<CR>
