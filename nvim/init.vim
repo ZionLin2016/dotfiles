@@ -12,6 +12,7 @@ set ignorecase
 set smartcase
 set updatetime=500
 set hidden
+set cursorline
 set wildmode=list:longest,list:full
 set encoding=utf-8
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -78,6 +79,8 @@ Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-rhubarb'
+Plug 'gregsexton/gitv', {'on': ['Gitv']}
 
 " markdown
 Plug 'iamcco/markdown-preview.vim'
@@ -91,9 +94,6 @@ Plug 'scrooloose/nerdcommenter'
 " format
 Plug 'sbdchd/neoformat'
 
-" gdb
-Plug 'sakhnik/nvim-gdb', { 'do': './install.sh' }
-
 " language server
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
@@ -105,11 +105,13 @@ let g:NERDTreeWinSize = 25
 
 " fzf
 let g:fzf_filemru_bufwrite = 1
-noremap <leader>fm :FilesMru --tiebreak=end<CR>
+noremap <leader>fr :FilesMru --tiebreak=end<CR>
 noremap <leader>ff :Files<CR>
 noremap <leader>ft :BTags<CR>
 noremap <leader>fl :BLines<CR>
 noremap <leader>fb :Buffers<CR>
+noremap <leader>fc :BCommits<CR>
+noremap <leader>fm :Marks<CR>
 noremap <M-0> :Windows<CR>
 
 " mundo toggle
@@ -147,9 +149,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -159,6 +160,14 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
