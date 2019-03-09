@@ -1,13 +1,14 @@
 {
   "dependencies": {
     "coc-css": "^1.0.7",
-    "coc-highlight": "^1.0.4",
+    "coc-dictionary": "^1.2.0",
+    "coc-highlight": "^1.0.5",
     "coc-html": "^1.0.6",
-    "coc-json": "^1.0.10",
+    "coc-json": "^1.0.11",
     "coc-pyls": "^1.0.6",
-    "coc-snippets": "^1.0.6",
-    "coc-tsserver": "^1.1.26",
-    "coc-word": "^1.1.1",
+    "coc-snippets": "^1.0.18",
+    "coc-tsserver": "^1.1.29",
+    "coc-word": "^1.2.0",
     "coc-yaml": "^1.0.0"
   }
 }
