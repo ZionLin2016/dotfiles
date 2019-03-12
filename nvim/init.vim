@@ -16,6 +16,9 @@ set cursorline
 set wildmode=list:longest,list:full
 set encoding=utf-8
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
+set noshowmode
+set foldmethod=syntax
+set foldlevelstart=99
 
 " undo
 set undofile
@@ -70,6 +73,9 @@ Plug 'mg979/vim-visual-multi'
 Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'  " icons need nerd font
+
+" syntax highlight
+Plug 'sheerun/vim-polyglot'
 
 " snippet
 Plug 'SirVer/ultisnips'
@@ -147,7 +153,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
@@ -182,3 +188,9 @@ filetype plugin indent on
 " color scheme
 colorscheme one
 set background=dark
+" colorscheme onedark
+hi CocHighlightText  guibg=#3e4452
+
+let g:airline#themes#one#palette = {}
+  let s:IA = airline#themes#get_highlight2(['NonText', 'fg'], ['CursorLine', 'fg'])
+  let g:airline#themes#one#palette.inactive = airline#themes#generate_color_map(s:IA, s:IA, s:IA)
