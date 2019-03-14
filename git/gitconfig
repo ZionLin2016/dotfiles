@@ -1,0 +1,9 @@
+[user]
+    email = USER_EMAIL
+    name = USER_NAME
+
+[diff]
+    tool = neovim
+
+[difftool "neovim"]
+    cmd = nvim -d $LOCAL $REMOTE
