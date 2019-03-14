@@ -4,10 +4,10 @@
     "coc-dictionary": "^1.2.0",
     "coc-highlight": "^1.0.5",
     "coc-html": "^1.0.6",
-    "coc-json": "^1.0.11",
+    "coc-json": "^1.0.12",
     "coc-pyls": "^1.0.6",
     "coc-snippets": "^1.0.19",
-    "coc-tsserver": "^1.1.29",
+    "coc-tsserver": "^1.1.30",
     "coc-word": "^1.2.0",
     "coc-yaml": "^1.0.0"
   }

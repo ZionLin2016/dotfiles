@@ -148,6 +148,9 @@ let g:neoformat_c_astyle = {'exe': 'astyle', 'args': ['--style=java'], 'replace'
 let g:neoformat_enable_python = ['autopep8']
 let g:neoformat_python_autopep8 = {'exe': 'autopep8', 'replace': 1}
 
+" gitv
+let g:Gitv_OpenHorizontal=1
+
 " coc
 inoremap <silent><expr> <c-space> coc#refresh()
 
