@@ -193,7 +193,3 @@ colorscheme one
 set background=dark
 " colorscheme onedark
 hi CocHighlightText  guibg=#3e4452
-
-let g:airline#themes#one#palette = {}
-  let s:IA = airline#themes#get_highlight2(['NonText', 'fg'], ['CursorLine', 'fg'])
-  let g:airline#themes#one#palette.inactive = airline#themes#generate_color_map(s:IA, s:IA, s:IA)

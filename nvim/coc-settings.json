@@ -15,6 +15,10 @@
         "cacheDirectory": "/tmp/ccls"
       }
     },
+    "lua": {
+      "command": "lua-lsp",
+      "filetypes": ["lua"]
+    },
     "dockerfile": {
       "command": "docker-langserver",
       "filetypes": ["dockerfile"],
