@@ -1,4 +1,3 @@
-EDITOR=nvim
 ZPLUG_HOME=~/.config/zsh/zplug
 
 # emacs mode
@@ -8,9 +7,7 @@ source ~/.config/zsh/zplug/init.zsh
 
 zplug "mdumitru/git-aliases"
 
-zplug "rupa/z", use:"z.sh"
-
-zplug "andrewferrier/fzf-z"
+zplug "kevinhwang91/z.lua"
 
 zplug "zsh-users/zsh-completions"
 
@@ -48,6 +45,12 @@ stty -ixon
 # enable key home and end
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
+
+# editor
+export EDITOR=nvim
+
+# python prompt toolkit color depth
+export PROMPT_TOOLKIT_COLOR_DEPTH=DEPTH_24_BIT
 
 # alias
 alias ll='ls -al'
