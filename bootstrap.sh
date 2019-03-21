@@ -32,12 +32,11 @@ setup_git() {
         user "What is you git user name"
         read -e git_name
 
-        sed -e "s/USER_NAME/$git_name/g" -e "s/USER_EMAIL/$git_email/g" $DOTFILES_ROOT/git/gitconfig > $HOME/.gitconfig
-        
+        sed -e "s/USER_NAME/$git_name/g" -e "s/USER_EMAIL/$git_email/g" $DOTFILES_ROOT/git/gitconfig >$HOME/.gitconfig
+
         success "setup gitconfig"
     fi
 }
-
 
 link_file() {
     local src=$1 dst=$2
@@ -102,16 +101,25 @@ mkdir -p $NVIM_HOME/autoload 2>/dev/null
 
 if [[ ! -f $NVIM_HOME/autoload/plug.vim ]]; then
     curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 link_file $D_NVIM_HOME/init.vim $NVIM_HOME/init.vim
 link_file $D_NVIM_HOME/rm_deleted_undo.sh $NVIM_HOME/rm_deleted_undo
 
 # neovim language-server
-link_file $D_NVIM_HOME/coc-settings.json $NVIM_HOME/coc-settings.json
-mkdir -p $HOME/.config/coc/extensions 2>/dev/null
-link_file $D_NVIM_HOME/coc-package.json $HOME/.config/coc/extensions/package.json
+if [[ ! -f $NVIM_HOME/coc.vim ]]; then
+    local action=
+    user "Neovim language-server coc not found.Do you want to install?\n\
+    [y]es, [n]o?"
+    read -n 1 action
+    if [[ $action == "y" ]]; then
+        link_file $D_NVIM_HOME/coc.vim $NVIM_HOME/coc.vim
+        link_file $D_NVIM_HOME/coc-settings.json $NVIM_HOME/coc-settings.json
+        mkdir -p $HOME/.config/coc/extensions 2>/dev/null
+        link_file $D_NVIM_HOME/coc-package.json $HOME/.config/coc/extensions/package.json
+    fi
+fi
 
 # idea
 D_IDEA_HOME=$DOTFILES_ROOT/idea
@@ -132,13 +140,12 @@ link_file $D_MYCLI_HOME/myclirc $HOME/.myclirc
 # zsh
 ZSH_HOME=$HOME/.config/zsh
 D_ZSH_HOME=$DOTFILES_ROOT/zsh
-mkdir -p $ZSH_HOME 2>/dev/null 
+mkdir -p $ZSH_HOME 2>/dev/null
 
 export ZPLUG_HOME=$ZSH_HOME/zplug
 if [[ ! -d $ZPLUG_HOME ]]; then
     git clone https://github.com/zplug/zplug $ZPLUG_HOME
-fi 
+fi
 
 link_file $D_ZSH_HOME/zshrc $HOME/.zshrc
 link_file $D_ZSH_HOME/lplug $ZSH_HOME/lplug
-
